@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.30)
+project(microbenchlib VERSION 1.0.0 LANGUAGES CXX)
+
+# Setup C++ standart
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Create lib microbenchlib
+add_library(microbenchlib src/image.cpp)
+
+# Set path to includes
+target_include_directories(microbenchlib PUBLIC includes)
+
+# Set props for library
+set_target_properties(microbenchlib PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION 1
+    PUBLIC_HEADER includes/microbench.h
+)
+
+# Google Test
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG b514bdc898e2951020cbdca1304b75f5950d1f59
+)
+FetchContent_MakeAvailable(googletest)
+
+# Make executable for tests
+add_executable(microbench_test tests/image_test.cpp)
+
+# Link link libs
+target_link_libraries(microbench_test PRIVATE microbenchlib gtest gtest_main)
+
+# Set path to includes for tests
+target_include_directories(microbench_test PRIVATE includes)
+
+# Enable tests
+enable_testing()
+add_test(NAME MicrobenchLibTest COMMAND microbench_test)
