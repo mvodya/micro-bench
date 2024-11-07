@@ -55,11 +55,11 @@ void Image::setPixel(uint16_t x, uint16_t y, Color color) {
 
 void Image::savePPM(std::ostream& out) {
   // Add header info
-  out << "P3\n" << this->_width << " " << this->_height << "\n255\n";
+  out << "P6\n" << this->_width << " " << this->_height << "\n255\n";
 
   const uint32_t pixelCount = this->_width * this->_height;
   for (uint32_t i = 0; i < pixelCount; i++) {
     Color* pixel = &this->_pixelBuffer[i];
-    out << pixel->r << ' ' << pixel->g << ' ' << pixel->b << '\n';
+    out << pixel->r << pixel->g << pixel->b;
   }
 }

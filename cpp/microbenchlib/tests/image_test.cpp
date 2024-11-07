@@ -158,7 +158,7 @@ TEST(MicrobenchLibTest, ImageSavePPM) {
   std::string data = ss.str();
 
   // Check header
-  ASSERT_THAT(data, StartsWith("P3\n32 16\n255\n"));
+  ASSERT_THAT(data, StartsWith("P6\n32 16\n255\n"));
   // Check pixel
-  ASSERT_THAT(data, HasSubstr("\xFF \x10 \x05\n"));
+  ASSERT_THAT(data, HasSubstr("\xFF\x10\x05"));
 }
