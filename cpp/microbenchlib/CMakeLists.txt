@@ -5,6 +5,12 @@ project(microbenchlib VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Fix MSVC compiler flags
+if(MSVC)
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+endif()
+
 # Create lib microbenchlib
 add_library(microbenchlib src/image.cpp)
 
@@ -39,3 +45,11 @@ target_include_directories(microbench_test PRIVATE includes)
 # Enable tests
 enable_testing()
 add_test(NAME MicrobenchLibTest COMMAND microbench_test)
+
+# microbenchlib tests
+add_custom_target(run_microbenchlib_tests
+    COMMAND ctest -C Debug --output-on-failure
+    DEPENDS microbench_test
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Running tests..."
+)
