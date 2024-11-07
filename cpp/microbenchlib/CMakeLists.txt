@@ -31,7 +31,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(microbench_test tests/image_test.cpp)
 
 # Link link libs
-target_link_libraries(microbench_test PRIVATE microbenchlib gtest gtest_main)
+target_link_libraries(microbench_test PRIVATE microbenchlib gtest gmock gtest_main)
 
 # Set path to includes for tests
 target_include_directories(microbench_test PRIVATE includes)

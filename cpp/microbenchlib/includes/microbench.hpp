@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <iostream>
 
 namespace MicroBench {
 
@@ -35,6 +36,9 @@ class Image {
   Color getPixel(uint16_t x, uint16_t y);
   // Set image pixel
   void setPixel(uint16_t x, uint16_t y, Color color);
+
+  // Save image in PPM (Portable PixMap) format
+  void savePPM(std::ostream& out);
 };
 
-}
+}  // namespace MicroBench
