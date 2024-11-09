@@ -3,6 +3,8 @@
 
 namespace MicroBench {
 
+// [RED] [GREEN] [BLUE]
+// r     g       b
 struct Color {
   uint8_t r, g, b;
 
@@ -10,6 +12,16 @@ struct Color {
   Color(uint8_t r, uint8_t g, uint8_t b) : r(r), g(g), b(b) {}
 };
 
+// Image with RGB pixel buffer
+//
+//  %--- WIDTH / x --→
+//  |                *
+//  |                *
+//  HEIGHT           *
+//  y                *
+//  |                *
+//  ↓ *  *  *  *  *  *
+//
 class Image {
   // Image sizes
   // _width  - x
@@ -37,8 +49,11 @@ class Image {
   // Set image pixel
   void setPixel(uint16_t x, uint16_t y, Color color);
 
-  // Save image in PPM (Portable PixMap) format
-  void savePPM(std::ostream& out);
+  // Generate image in PPM (Portable PixMap) format
+  void generatePPM(std::ostream& out);
+
+  // Save image file in PPM (Portable PixMap) format
+  bool Image::saveFile(const char* filename);
 };
 
 }  // namespace MicroBench

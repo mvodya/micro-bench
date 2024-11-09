@@ -5,8 +5,8 @@
 
 #include "microbench.hpp"
 
-using ::testing::StartsWith;
 using ::testing::HasSubstr;
+using ::testing::StartsWith;
 
 TEST(MicrobenchLibTest, ImageSizes) {
   MicroBench::Image *image0 = new MicroBench::Image(1920, 1080);
@@ -24,6 +24,28 @@ TEST(MicrobenchLibTest, ImageSizes) {
   MicroBench::Image *image3 = new MicroBench::Image(3, 4);
   ASSERT_NE(image3->getWidth(), 4);
   ASSERT_NE(image3->getHeight(), 3);
+}
+
+TEST(MicrobenchLibTest, ImageInvalidSizes) {
+  ASSERT_THROW(
+      { MicroBench::Image *image0 = new MicroBench::Image(0, 0); },
+      std::invalid_argument);
+
+  ASSERT_THROW(
+      { MicroBench::Image *image1 = new MicroBench::Image(0, 100); },
+      std::invalid_argument);
+
+  ASSERT_THROW(
+      { MicroBench::Image *image2 = new MicroBench::Image(100, 0); },
+      std::invalid_argument);
+
+  ASSERT_THROW(
+      { MicroBench::Image *image3 = new MicroBench::Image(-100, 0); },
+      std::invalid_argument);
+
+  ASSERT_THROW(
+      { MicroBench::Image *image3 = new MicroBench::Image(0, -100); },
+      std::invalid_argument);
 }
 
 TEST(MicrobenchLibTest, ImageInitZero) {
@@ -146,19 +168,19 @@ TEST(MicrobenchLibTest, ImageGetSetCheckBounds) {
   ASSERT_THROW({ image0->getPixel(1500, 2500); }, std::out_of_range);
 }
 
-TEST(MicrobenchLibTest, ImageSavePPM) {
+TEST(MicrobenchLibTest, ImageGeneratePPM) {
   MicroBench::Image *image = new MicroBench::Image(32, 16);
 
   image->setPixel(30, 15, MicroBench::Color(0xFF, 0x10, 0x05));
 
   // Generate PPM
   std::stringstream ss;
-  image->savePPM(ss);
+  image->generatePPM(ss);
 
   std::string data = ss.str();
 
   // Check header
-  ASSERT_THAT(data, StartsWith("P6\n32 16\n255\n"));
+  ASSERT_THAT(data, StartsWith("P6\n# Microbench lib\n32 16\n255\n"));
   // Check pixel
   ASSERT_THAT(data, HasSubstr("\xFF\x10\x05"));
 }
