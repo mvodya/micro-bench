@@ -8,7 +8,7 @@
 using ::testing::HasSubstr;
 using ::testing::StartsWith;
 
-TEST(MicrobenchLibTest, ImageSizes) {
+TEST(ImageTest, ImageSizes) {
   MicroBench::Image *image0 = new MicroBench::Image(1920, 1080);
   ASSERT_EQ(image0->getWidth(), 1920);
   ASSERT_EQ(image0->getHeight(), 1080);
@@ -26,7 +26,7 @@ TEST(MicrobenchLibTest, ImageSizes) {
   ASSERT_NE(image3->getHeight(), 3);
 }
 
-TEST(MicrobenchLibTest, ImageInvalidSizes) {
+TEST(ImageTest, ImageInvalidSizes) {
   ASSERT_THROW(
       { MicroBench::Image *image0 = new MicroBench::Image(0, 0); },
       std::invalid_argument);
@@ -48,7 +48,7 @@ TEST(MicrobenchLibTest, ImageInvalidSizes) {
       std::invalid_argument);
 }
 
-TEST(MicrobenchLibTest, ImageInitZero) {
+TEST(ImageTest, ImageInitZero) {
   const size_t SIZE = 32;
   MicroBench::Image *image = new MicroBench::Image(SIZE, SIZE);
 
@@ -63,7 +63,7 @@ TEST(MicrobenchLibTest, ImageInitZero) {
   }
 }
 
-TEST(MicrobenchLibTest, ImageInitFill) {
+TEST(ImageTest, ImageInitFill) {
   const size_t SIZE_X = 512;
   const size_t SIZE_Y = 1024;
   MicroBench::Image *image = new MicroBench::Image(SIZE_X, SIZE_Y);
@@ -87,7 +87,7 @@ TEST(MicrobenchLibTest, ImageInitFill) {
   }
 }
 
-TEST(MicrobenchLibTest, ImageInitFillGetSet) {
+TEST(ImageTest, ImageInitFillGetSet) {
   const size_t SIZE_X = 512;
   const size_t SIZE_Y = 1024;
   MicroBench::Image *image = new MicroBench::Image(SIZE_X, SIZE_Y);
@@ -111,7 +111,7 @@ TEST(MicrobenchLibTest, ImageInitFillGetSet) {
   }
 }
 
-TEST(MicrobenchLibTest, ImageGetSetPixelPtr) {
+TEST(ImageTest, ImageGetSetPixelPtr) {
   MicroBench::Image *image = new MicroBench::Image(32, 32);
 
   MicroBench::Color *pixel = image->getPixelPtr(16, 5);
@@ -129,7 +129,7 @@ TEST(MicrobenchLibTest, ImageGetSetPixelPtr) {
   ASSERT_EQ(pixel->b, 94);
 }
 
-TEST(MicrobenchLibTest, ImageGetSetPixel) {
+TEST(ImageTest, ImageGetSetPixel) {
   MicroBench::Image *image = new MicroBench::Image(32, 32);
 
   MicroBench::Color pixel = image->getPixel(30, 15);
@@ -145,7 +145,7 @@ TEST(MicrobenchLibTest, ImageGetSetPixel) {
   ASSERT_EQ(pixelCheck.b, 60);
 }
 
-TEST(MicrobenchLibTest, ImageGetSetCheckBounds) {
+TEST(ImageTest, ImageGetSetCheckBounds) {
   MicroBench::Image *image0 = new MicroBench::Image(1000, 2000);
 
   ASSERT_NO_THROW({
@@ -168,7 +168,7 @@ TEST(MicrobenchLibTest, ImageGetSetCheckBounds) {
   ASSERT_THROW({ image0->getPixel(1500, 2500); }, std::out_of_range);
 }
 
-TEST(MicrobenchLibTest, ImageGeneratePPM) {
+TEST(ImageTest, ImageGeneratePPM) {
   MicroBench::Image *image = new MicroBench::Image(32, 16);
 
   image->setPixel(30, 15, MicroBench::Color(0xFF, 0x10, 0x05));

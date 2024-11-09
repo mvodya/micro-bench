@@ -56,4 +56,22 @@ class Image {
   bool Image::saveFile(const char* filename);
 };
 
+struct Vec3 {
+  // Vector values
+  float x, y, z;
+
+  Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+
+  // Summation
+  Vec3 operator+(const Vec3& v) const;
+  // Subtraction
+  Vec3 operator-(const Vec3& v) const;
+  // Scalar multiplication
+  Vec3 operator*(float f) const;
+  // Calculate vector length
+  float length() const;
+  // Get vector normalize
+  Vec3 normalized() const;
+};
+
 }  // namespace MicroBench
