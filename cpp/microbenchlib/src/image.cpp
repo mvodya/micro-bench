@@ -20,6 +20,8 @@ Image::Image(uint16_t width, uint16_t height) {
   memset(_pixelBuffer, 0, sizeof(Color));
 }
 
+Image::~Image() { delete[] _pixelBuffer; }
+
 uint16_t Image::getWidth() { return _width; }
 
 uint16_t Image::getHeight() { return _height; }

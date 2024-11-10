@@ -1,3 +1,4 @@
+#include <chrono>
 #include <cstdint>
 #include <iostream>
 
@@ -38,6 +39,7 @@ class Image {
 
  public:
   Image(uint16_t width, uint16_t height);
+  ~Image();
 
   // Get image size
   uint16_t getWidth();
@@ -83,5 +85,26 @@ struct Vec3 {
   // Convert to color
   operator Color() const;
 };
+
+// Function to measure execution time of a given function
+template <typename Func>
+auto measureExecutionTime(Func func) {
+  using namespace std::chrono;
+
+  // Start time
+  auto start = high_resolution_clock::now();
+
+  // Execute the function
+  auto result = func();
+
+  // End time
+  auto end = high_resolution_clock::now();
+
+  // Calculate the duration in nanoseconds
+  auto duration = duration_cast<nanoseconds>(end - start);
+
+  // Return the result and duration as a pair
+  return std::make_pair(result, duration.count());
+}
 
 }  // namespace MicroBench

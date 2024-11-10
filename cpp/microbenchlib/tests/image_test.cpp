@@ -29,6 +29,20 @@ TEST(ImageTest, ImageSizes) {
   ASSERT_NE(image3->getHeight(), 3);
 }
 
+TEST(ImageDestructionTest, DestructorDoesNotLeakMemory) {
+  for (int i = 0; i < 1000; ++i) {
+    MicroBench::Image image(512, 512);
+    MicroBench::Color *buffer = image.getBuffer();
+
+    ASSERT_NE(buffer, nullptr);
+
+    image.setPixel(0, 0, MicroBench::Color(255, 0, 0));
+    ASSERT_EQ(image.getPixel(0, 0).r, 255);
+    ASSERT_EQ(image.getPixel(0, 0).g, 0);
+    ASSERT_EQ(image.getPixel(0, 0).b, 0);
+  }
+}
+
 TEST(ImageTest, ImageInvalidSizes) {
   ASSERT_THROW(
       { MicroBench::Image *image0 = new MicroBench::Image(0, 0); },

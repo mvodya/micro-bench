@@ -34,7 +34,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 # Make executable for tests
-add_executable(microbench_test tests/image_test.cpp tests/vec3_test.cpp)
+add_executable(microbench_test tests/image_test.cpp tests/vec3_test.cpp tests/measure_time_test.cpp)
 
 # Link link libs
 target_link_libraries(microbench_test PRIVATE microbenchlib gtest gmock gtest_main)
@@ -46,6 +46,7 @@ target_include_directories(microbench_test PRIVATE includes)
 enable_testing()
 add_test(NAME ImageTest COMMAND microbench_test)
 add_test(NAME Vec3Test COMMAND microbench_test)
+add_test(NAME MeasureTimeTest COMMAND microbench_test)
 
 # microbenchlib tests
 add_custom_target(run_microbenchlib_tests
