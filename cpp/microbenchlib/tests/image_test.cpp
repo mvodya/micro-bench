@@ -8,6 +8,9 @@
 using ::testing::HasSubstr;
 using ::testing::StartsWith;
 
+// Tolerance for floating-point comparisons
+const float TOLERANCE = 1e-5f;
+
 TEST(ImageTest, ImageSizes) {
   MicroBench::Image *image0 = new MicroBench::Image(1920, 1080);
   ASSERT_EQ(image0->getWidth(), 1920);
@@ -183,4 +186,20 @@ TEST(ImageTest, ImageGeneratePPM) {
   ASSERT_THAT(data, StartsWith("P6\n# Microbench lib\n32 16\n255\n"));
   // Check pixel
   ASSERT_THAT(data, HasSubstr("\xFF\x10\x05"));
+}
+
+TEST(ImageTest, ColorToVec3Conversion) {
+  MicroBench::Color color(128, 64, 255);
+  MicroBench::Vec3 vec = color;
+  EXPECT_NEAR(vec.x, 128.0 / 255.0, TOLERANCE);
+  EXPECT_NEAR(vec.y, 64.0 / 255.0, TOLERANCE);
+  EXPECT_NEAR(vec.z, 255.0 / 255.0, TOLERANCE);
+}
+
+TEST(ImageTest, DefaultColorToVec3Conversion) {
+  MicroBench::Color color;
+  MicroBench::Vec3 vec = color;
+  EXPECT_NEAR(vec.x, 0.0, TOLERANCE);
+  EXPECT_NEAR(vec.y, 0.0, TOLERANCE);
+  EXPECT_NEAR(vec.z, 0.0, TOLERANCE);
 }

@@ -3,6 +3,8 @@
 
 namespace MicroBench {
 
+struct Vec3;
+
 // [RED] [GREEN] [BLUE]
 // r     g       b
 struct Color {
@@ -10,6 +12,9 @@ struct Color {
 
   Color() : r(0), g(0), b(0) {}
   Color(uint8_t r, uint8_t g, uint8_t b) : r(r), g(g), b(b) {}
+
+  // Convert to vector
+  operator Vec3() const;
 };
 
 // Image with RGB pixel buffer
@@ -58,20 +63,25 @@ class Image {
 
 struct Vec3 {
   // Vector values
-  float x, y, z;
+  double x, y, z;
 
-  Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+  Vec3(double x, double y, double z) : x(x), y(y), z(z) {}
 
   // Summation
   Vec3 operator+(const Vec3& v) const;
   // Subtraction
   Vec3 operator-(const Vec3& v) const;
+  // Multiplication by value
+  Vec3 operator*(double f) const;
   // Scalar multiplication
-  Vec3 operator*(float f) const;
+  double operator*(const Vec3& v) const;
   // Calculate vector length
-  float length() const;
+  double length() const;
   // Get vector normalize
-  Vec3 normalized() const;
+  Vec3 normalize() const;
+
+  // Convert to color
+  operator Color() const;
 };
 
 }  // namespace MicroBench
