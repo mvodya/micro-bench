@@ -33,7 +33,7 @@ double mandelbulbDE(const Vec3& pos) {
   // Distance
   double r = 0.0;
 
-  for (int i = 0; i < MAX_ITERATIONS; i++) {
+  for (size_t i = 0; i < MAX_ITERATIONS; i++) {
     r = z.length();
     if (r > BAILOUT) break;
 
@@ -73,7 +73,7 @@ Vec3 getNormal(const Vec3& pos) {
 // Ray marching function to find distance to the surface
 double rayMarch(const Vec3& from, const Vec3& dir) {
   double distance = 0.0;
-  for (int i = 0; i < MAX_MARCHING_STEPS; i++) {
+  for (size_t i = 0; i < MAX_MARCHING_STEPS; i++) {
     Vec3 pos = from + dir * distance;
     double d = mandelbulbDE(pos);
     if (d < SURFACE_DISTANCE) {
@@ -152,6 +152,6 @@ int main() {
     delete image;
   }
 
-  std::cout << "All renderings is done\n";
+  std::cout << "All renderings are done\n";
   return 0;
 }
