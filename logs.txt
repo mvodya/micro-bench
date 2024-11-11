@@ -1,0 +1,53 @@
+Mandelbulb single thread benchmark
+Size: 2048 x 2048
+POWER: 8 / MAX ITERATIONS: 8
+Start rendering 1/10
+[1] Execution time: 37236387300 ns (37.2364 s)
+Save first run to file mandelbulb.ppm
+Start rendering 2/10
+[2] Execution time: 37554471100 ns (37.5545 s)
+Start rendering 3/10
+[3] Execution time: 37124278600 ns (37.1243 s)
+Start rendering 4/10
+[4] Execution time: 37129171400 ns (37.1292 s)
+Start rendering 5/10
+[5] Execution time: 37459323600 ns (37.4593 s)
+Start rendering 6/10
+[6] Execution time: 37198287000 ns (37.1983 s)
+Start rendering 7/10
+[7] Execution time: 37110127900 ns (37.1101 s)
+Start rendering 8/10
+[8] Execution time: 37183124500 ns (37.1831 s)
+Start rendering 9/10
+[9] Execution time: 37252214500 ns (37.2522 s)
+Start rendering 10/10
+[10] Execution time: 37340123200 ns (37.3401 s)
+All renderings is done
+
+
+Mandelbulb multi threaded benchmark
+Number of available threads: 16
+Size: 2048 x 2048
+POWER: 8 / MAX ITERATIONS: 100
+Start rendering 1/10
+[1] Execution time: 4260268900 ns (4.26027 s)
+Save first run to file mandelbulb.ppm
+Start rendering 2/10
+[2] Execution time: 4655068100 ns (4.65507 s)
+Start rendering 3/10
+[3] Execution time: 4645923700 ns (4.64592 s)
+Start rendering 4/10
+[4] Execution time: 4470460100 ns (4.47046 s)
+Start rendering 5/10
+[5] Execution time: 4776993300 ns (4.77699 s)
+Start rendering 6/10
+[6] Execution time: 4173491600 ns (4.17349 s)
+Start rendering 7/10
+[7] Execution time: 4286498700 ns (4.2865 s)
+Start rendering 8/10
+[8] Execution time: 4261474600 ns (4.26147 s)
+Start rendering 9/10
+[9] Execution time: 4515796000 ns (4.5158 s)
+Start rendering 10/10
+[10] Execution time: 4162141800 ns (4.16214 s)
+All renderings are done
