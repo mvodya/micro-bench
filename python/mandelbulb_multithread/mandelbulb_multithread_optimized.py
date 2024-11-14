@@ -137,3 +137,5 @@ for i in range(STEPS):
     print("Save first run to file mandelbulb.png")
     image = Image.fromarray(data, 'RGB')
     image.save('mandelbulb.png')
+
+print("All renderings are done")
