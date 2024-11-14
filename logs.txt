@@ -109,7 +109,7 @@ Start rendering 10/10
 
 
 
-[PYTHON] Mandelbulb multi-thread benchmark
+[PYTHON] Mandelbulb multi threaded benchmark
 Number of available threads: 16
 Size: 2048 x 2048
 POWER: 8.0 / MAX ITERATIONS: 100
@@ -137,7 +137,7 @@ Start rendering 10/10
 
 
 
-[PYTHON OPTIMIZED] Mandelbulb single thread benchmark
+[PYTHON OPTIMIZED] Mandelbulb multi threaded benchmark
 Number of available threads: 16
 Size: 2048 x 2048
 POWER: 8.0 / MAX ITERATIONS: 100

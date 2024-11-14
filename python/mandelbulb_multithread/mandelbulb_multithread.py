@@ -125,7 +125,7 @@ def mandelbulb():
 if __name__ == '__main__':
   STEPS = 10
 
-  print("[PYTHON] Mandelbulb multi-thread benchmark")
+  print("[PYTHON] Mandelbulb multi threaded benchmark")
   print(f"Number of available threads: {cpu_count()}\nSize: {WIDTH} x {HEIGHT}\nPOWER: {POWER} / MAX ITERATIONS: {MAX_MARCHING_STEPS}")
 
   for i in range(STEPS):
