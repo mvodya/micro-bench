@@ -121,7 +121,7 @@ def mandelbulb():
 
 STEPS = 10
 
-print("[PYTHON OPTIMIZED] Mandelbulb single thread benchmark")
+print("[PYTHON OPTIMIZED] Mandelbulb multi-thread benchmark")
 print(f"Number of available threads: {get_num_threads()}\nSize: {WIDTH} x {HEIGHT}\nPOWER: {POWER} / MAX ITERATIONS: {MAX_MARCHING_STEPS}")
 
 for i in range(STEPS):
