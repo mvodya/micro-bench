@@ -61,7 +61,6 @@ POWER: 8.0 / MAX ITERATIONS: 100
 Start rendering 1/10
 [1] Execution time: 3314366979200 ns (3314.3669792 s)
 Save first run to file mandelbulb.png
-
 Start rendering 2/10
 [2] Execution time: 3237684917000 ns (3237.684917 s)
 Start rendering 3/10
@@ -80,3 +79,30 @@ Start rendering 9/10
 [9] Execution time: 3140867519300 ns (3140.8675193 s)
 Start rendering 10/10
 [10] Execution time: 3130886747600 ns (3130.8867476 s)
+
+
+
+[PYTHON OPTIMIZED] Mandelbulb single thread benchmark
+Size: 2048 x 2048
+POWER: 8.0 / MAX ITERATIONS: 100
+Start rendering 1/10
+[1] Execution time: 152627479400 ns (152.6274794 s)
+Save first run to file mandelbulb.png
+Start rendering 2/10
+[2] Execution time: 151323405700 ns (151.3234057 s)
+Start rendering 3/10
+[3] Execution time: 151908541100 ns (151.9085411 s)
+Start rendering 4/10
+[4] Execution time: 151371773000 ns (151.371773 s)
+Start rendering 5/10
+[5] Execution time: 152666985900 ns (152.6669859 s)
+Start rendering 6/10
+[6] Execution time: 153675344900 ns (153.6753449 s)
+Start rendering 7/10
+[7] Execution time: 153088585900 ns (153.0885859 s)
+Start rendering 8/10
+[8] Execution time: 154228287400 ns (154.2282874 s)
+Start rendering 9/10
+[9] Execution time: 155515639300 ns (155.5156393 s)
+Start rendering 10/10
+[10] Execution time: 154600114300 ns (154.6001143 s)
