@@ -162,7 +162,7 @@ int main() {
   // Default to 4 if unable to detect
   if (num_threads == 0) num_threads = 4;
 
-  std::cout << "Mandelbulb multi threaded benchmark\n";
+  std::cout << "[CPP] Mandelbulb multi threaded benchmark\n";
   std::cout << "Number of available threads: " << num_threads << "\n";
   std::cout << "Size: " << WIDTH << " x " << HEIGHT << "\nPOWER: " << POWER
             << " / MAX ITERATIONS: " << MAX_MARCHING_STEPS << "\n";

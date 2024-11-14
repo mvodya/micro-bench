@@ -133,7 +133,7 @@ Image* mandelbulb() {
 int main() {
   const size_t STEPS = 10;
 
-  std::cout << "Mandelbulb single thread benchmark\n";
+  std::cout << "[CPP] Mandelbulb single thread benchmark\n";
   std::cout << "Size: " << WIDTH << " x " << HEIGHT << "\nPOWER: " << POWER
             << " / MAX ITERATIONS: " << MAX_MARCHING_STEPS << "\n";
 
