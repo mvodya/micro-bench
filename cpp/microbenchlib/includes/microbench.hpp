@@ -87,15 +87,15 @@ struct Vec3 {
 };
 
 // Function to measure execution time of a given function
-template <typename Func>
-auto measureExecutionTime(Func func) {
+template <typename Func, typename... Args>
+auto measureExecutionTime(Func func, Args&&... args) {
   using namespace std::chrono;
 
   // Start time
   auto start = high_resolution_clock::now();
 
   // Execute the function
-  auto result = func();
+  auto result = func(std::forward<Args>(args)...);
 
   // End time
   auto end = high_resolution_clock::now();
