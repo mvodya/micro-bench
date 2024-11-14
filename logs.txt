@@ -1,4 +1,4 @@
-Mandelbulb single thread benchmark
+[CPP] Mandelbulb single thread benchmark
 Size: 2048 x 2048
 POWER: 8 / MAX ITERATIONS: 8
 Start rendering 1/10
@@ -25,7 +25,8 @@ Start rendering 10/10
 All renderings is done
 
 
-Mandelbulb multi threaded benchmark
+
+[CPP] Mandelbulb multi threaded benchmark
 Number of available threads: 16
 Size: 2048 x 2048
 POWER: 8 / MAX ITERATIONS: 100
@@ -51,3 +52,31 @@ Start rendering 9/10
 Start rendering 10/10
 [10] Execution time: 4162141800 ns (4.16214 s)
 All renderings are done
+
+
+
+[PYTHON] Mandelbulb single thread benchmark
+Size: 2048 x 2048
+POWER: 8.0 / MAX ITERATIONS: 100
+Start rendering 1/10
+[1] Execution time: 3314366979200 ns (3314.3669792 s)
+Save first run to file mandelbulb.png
+
+Start rendering 2/10
+[2] Execution time: 3237684917000 ns (3237.684917 s)
+Start rendering 3/10
+[3] Execution time: 3241383980300 ns (3241.3839803 s)
+Start rendering 4/10
+[4] Execution time: 3241809707400 ns (3241.8097074 s)
+Start rendering 5/10
+[5] Execution time: 3251693377500 ns (3251.6933775 s)
+Start rendering 6/10
+[6] Execution time: 3237803039800 ns (3237.8030398 s)
+Start rendering 7/10
+[7] Execution time: 3241533098800 ns (3241.5330988 s)
+Start rendering 8/10
+[8] Execution time: 3194050304400 ns (3194.0503044 s)
+Start rendering 9/10
+[9] Execution time: 3140867519300 ns (3140.8675193 s)
+Start rendering 10/10
+[10] Execution time: 3130886747600 ns (3130.8867476 s)
