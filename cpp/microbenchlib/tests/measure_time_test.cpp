@@ -6,6 +6,18 @@
 
 using namespace MicroBench;
 
+TEST(MeasureTimeTest, MeasureExecutionTime) {
+  // Start test & measure time
+  auto duration = measureExecutionTime([&]() {
+    long long int sum = 0;
+    for (int i = 0; i < 1000000; i++) {
+      sum += i;
+    }
+  });
+
+  EXPECT_GT(duration, 0);
+}
+
 // Function for test
 long long int sampleComputation() {
   long long int sum = 0;
@@ -34,7 +46,8 @@ long long int sampleComputationWithArgs(int start, int add) {
 
 TEST(MeasureTimeTest, MeasureExecutionTimeWithResultAndArgs) {
   // Start test & measure time
-  auto [result, duration] = measureExecutionTime(sampleComputationWithArgs, 100, 1);
+  auto [result, duration] =
+      measureExecutionTime(sampleComputationWithArgs, 100, 1);
 
   EXPECT_EQ(result, 499999500100);
   EXPECT_GT(duration, 0);

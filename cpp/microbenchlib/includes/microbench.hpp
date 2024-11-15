@@ -94,17 +94,31 @@ auto measureExecutionTime(Func func, Args&&... args) {
   // Start time
   auto start = high_resolution_clock::now();
 
-  // Execute the function
-  auto result = func(std::forward<Args>(args)...);
+  if constexpr (std::is_void_v<std::invoke_result_t<Func, Args...>>) {
+    // Execute the function
+    func(std::forward<Args>(args)...);
 
-  // End time
-  auto end = high_resolution_clock::now();
+    // End time
+    auto end = high_resolution_clock::now();
 
-  // Calculate the duration in nanoseconds
-  auto duration = duration_cast<nanoseconds>(end - start);
+    // Calculate the duration in nanoseconds
+    auto duration = duration_cast<nanoseconds>(end - start);
 
-  // Return the result and duration as a pair
-  return std::make_pair(result, duration.count());
+    // Return the result and duration as a pair
+    return duration.count();
+  } else {
+    // Execute the function
+    auto result = func(std::forward<Args>(args)...);
+
+    // End time
+    auto end = high_resolution_clock::now();
+
+    // Calculate the duration in nanoseconds
+    auto duration = duration_cast<nanoseconds>(end - start);
+
+    // Return the result and duration as a pair
+    return std::make_pair(result, duration.count());
+  }
 }
 
 }  // namespace MicroBench
