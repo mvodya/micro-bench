@@ -166,3 +166,32 @@ Start rendering 9/10
 Start rendering 10/10
 [10] Execution time: 21473246600 ns (21.4732466 s)
 All renderings are done
+
+
+
+[CPP CUDA] Mandelbulb GPU benchmark
+Size: 2048 x 2048
+POWER: 8 / MAX ITERATIONS: 100
+CUDA Block: 16 x 16 = 256
+Start rendering 1/10
+[1] Execution time: 303022300 ns (0.303022 s)
+Save first run to file mandelbulb.ppm
+Start rendering 2/10
+[2] Execution time: 296118700 ns (0.296119 s)
+Start rendering 3/10
+[3] Execution time: 292738100 ns (0.292738 s)
+Start rendering 4/10
+[4] Execution time: 306827000 ns (0.306827 s)
+Start rendering 5/10
+[5] Execution time: 295124800 ns (0.295125 s)
+Start rendering 6/10
+[6] Execution time: 292911100 ns (0.292911 s)
+Start rendering 7/10
+[7] Execution time: 293531400 ns (0.293531 s)
+Start rendering 8/10
+[8] Execution time: 294248400 ns (0.294248 s)
+Start rendering 9/10
+[9] Execution time: 287057200 ns (0.287057 s)
+Start rendering 10/10
+[10] Execution time: 297248800 ns (0.297249 s)
+All renderings are done
