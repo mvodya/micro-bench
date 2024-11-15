@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(mandelbulb_animation)
+project(mandelbulb_animation VERSION 1.0.0 LANGUAGES CXX)
 
 # Setup C++ standart
 set(CMAKE_CXX_STANDARD 17)
@@ -12,20 +12,16 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /arch:AVX2 /GL")
 endif()
 
-# Fix MSVC compiler flags
-if(MSVC)
-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
-endif()
-
 # Create executable app
 add_executable(mandelbulb_animation src/main.cpp)
-
-# Linkage microbenchlib
-target_link_libraries(mandelbulb_animation PRIVATE microbenchlib)
-
-# Set path to includes for microbenchlib
+# Set static build for MSVC
+if(MSVC)
+    target_compile_options(mandelbulb_animation PRIVATE "/MT$<$<CONFIG:Debug>:d>")
+endif()
+# Link microbenchlib
+add_dependencies(mandelbulb_animation microbenchlib)
 target_include_directories(mandelbulb_animation PRIVATE ../microbenchlib/includes)
+target_link_libraries(mandelbulb_animation PRIVATE microbenchlib)
 
 # mandelbulb_animation
 add_custom_target(run_mandelbulb_animation

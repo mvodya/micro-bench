@@ -5,12 +5,6 @@ project(microbenchlib VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Fix MSVC compiler flags
-if(MSVC)
-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
-endif()
-
 # Enable optimizations for Release build
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native -flto")
@@ -19,11 +13,13 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 endif()
 
 # Create lib microbenchlib
-add_library(microbenchlib src/image.cpp src/vector.cpp)
-
+add_library(microbenchlib STATIC src/image.cpp src/vector.cpp)
+# Set static build for MSVC
+if(MSVC)
+    target_compile_options(microbenchlib PRIVATE "/MT$<$<CONFIG:Debug>:d>")
+endif()
 # Set path to includes
 target_include_directories(microbenchlib PUBLIC includes)
-
 # Set props for library
 set_target_properties(microbenchlib PROPERTIES
     VERSION ${PROJECT_VERSION}
@@ -32,6 +28,7 @@ set_target_properties(microbenchlib PROPERTIES
 )
 
 # Google Test
+set(gtest_force_shared_crt OFF CACHE BOOL "" FORCE)
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -42,12 +39,14 @@ FetchContent_MakeAvailable(googletest)
 
 # Make executable for tests
 add_executable(microbench_test tests/image_test.cpp tests/vec3_test.cpp tests/measure_time_test.cpp)
-
-# Link link libs
-target_link_libraries(microbench_test PRIVATE microbenchlib gtest gmock gtest_main)
-
-# Set path to includes for tests
+# Set static build for MSVC
+if(MSVC)
+    target_compile_options(microbench_test PRIVATE "/MT$<$<CONFIG:Debug>:d>")
+endif()
+# Link libs for tests
+add_dependencies(microbench_test gtest)
 target_include_directories(microbench_test PRIVATE includes)
+target_link_libraries(microbench_test PRIVATE gtest gmock gtest_main microbenchlib)
 
 # Enable tests
 enable_testing()
