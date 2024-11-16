@@ -1,5 +1,6 @@
 #include <fstream>
 #include <stdexcept>
+#include <string.h>
 
 #include "microbench.hpp"
 

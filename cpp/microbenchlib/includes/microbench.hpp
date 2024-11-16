@@ -60,7 +60,7 @@ class Image {
   void generatePPM(std::ostream& out);
 
   // Save image file in PPM (Portable PixMap) format
-  bool Image::saveFile(const char* filename);
+  bool saveFile(const char* filename);
 };
 
 struct Vec3 {

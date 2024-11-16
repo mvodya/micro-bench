@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "microbench.hpp"
 
 using namespace MicroBench;
