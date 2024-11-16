@@ -4,24 +4,26 @@
 #include <iostream>
 #include <microbench.hpp>
 
+#include "mandelbulb_config.h"
+
 using namespace MicroBench;
 
 // Image width ? height in pixels
-const uint16_t WIDTH = 2048, HEIGHT = 2048;
+const uint16_t WIDTH = MB_MANDELBULB_RESOLUTION_WIDTH, HEIGHT = MB_MANDELBULB_RESOLUTION_HEIGHT;
 
 // Maximum number of steps for ray marching
-const int MAX_MARCHING_STEPS = 100;
+const int MAX_MARCHING_STEPS = MB_MANDELBULB_MAX_MARCHING_STEPS;
 // Maximum marching distance before stopping
-const double MAX_DISTANCE = 100.0;
+const double MAX_DISTANCE = MB_MANDELBULB_MAX_DISTANCE;
 // Minimum distance threshold to consider on surface
-const double SURFACE_DISTANCE = 0.001;
+const double SURFACE_DISTANCE = MB_MANDELBULB_SURFACE_DISTANCE;
 
 // Maximum iterations for distance estimator function
-const int MAX_ITERATIONS = 8;
+const int MAX_ITERATIONS = MB_MANDELBULB_MAX_ITERATIONS;
 // Escape radius for distance estimator
-const double BAILOUT = 2.0;
+const double BAILOUT = MB_MANDELBULB_BAILOUT;
 // Power exponent for Mandelbulb fractal shape
-const double POWER = 8.0;
+const double POWER = MB_MANDELBULB_POWER;
 
 // Distance estimator (DE) function for the Mandelbulb fractal
 // Calculate minimum distance from point to fractal
@@ -131,7 +133,7 @@ Image* mandelbulb() {
 }
 
 int main() {
-  const size_t STEPS = 10;
+  const size_t STEPS = MB_RENDER_NUM;
 
   std::cout << "[CPP] Mandelbulb single thread benchmark\n";
   std::cout << "Size: " << WIDTH << " x " << HEIGHT << "\nPOWER: " << POWER

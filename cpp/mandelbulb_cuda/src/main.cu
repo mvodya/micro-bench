@@ -6,24 +6,26 @@
 #include <iostream>
 #include <microbench.hpp>
 
+#include "mandelbulb_config.h"
+
 using namespace MicroBench;
 
 // Image width ? height in pixels
-const uint16_t WIDTH = 2048, HEIGHT = 2048;
+const uint16_t WIDTH = MB_MANDELBULB_RESOLUTION_WIDTH, HEIGHT = MB_MANDELBULB_RESOLUTION_HEIGHT;
 
 // Maximum number of steps for ray marching
-__device__ const int MAX_MARCHING_STEPS = 100;
+__device__ const int MAX_MARCHING_STEPS = MB_MANDELBULB_MAX_MARCHING_STEPS;
 // Maximum marching distance before stopping
-__device__ const double MAX_DISTANCE = 100.0;
+__device__ const double MAX_DISTANCE = MB_MANDELBULB_MAX_DISTANCE;
 // Minimum distance threshold to consider on surface
-__device__ const double SURFACE_DISTANCE = 0.001;
+__device__ const double SURFACE_DISTANCE = MB_MANDELBULB_SURFACE_DISTANCE;
 
 // Maximum iterations for distance estimator function
-__device__ const int MAX_ITERATIONS = 8;
+__device__ const int MAX_ITERATIONS = MB_MANDELBULB_MAX_ITERATIONS;
 // Escape radius for distance estimator
-__device__ const double BAILOUT = 2.0;
+__device__ const double BAILOUT = MB_MANDELBULB_BAILOUT;
 // Power exponent for Mandelbulb fractal shape
-__device__ const double POWER = 8.0;
+__device__ const double POWER = MB_MANDELBULB_POWER;
 
 __device__ const double EPS = 0.001;
 
@@ -166,7 +168,7 @@ __global__ void mandelbulbKernel(uint8_t* buffer) {
 }
 
 int main() {
-  const size_t STEPS = 10;
+  const size_t STEPS = MB_RENDER_NUM;
   std::cout << "[CPP CUDA] Mandelbulb GPU benchmark\n";
   std::cout << "Size: " << WIDTH << " x " << HEIGHT << "\nPOWER: " << POWER
             << " / MAX ITERATIONS: " << MAX_MARCHING_STEPS << "\nCUDA Block: 16 x 16 = 256\n";

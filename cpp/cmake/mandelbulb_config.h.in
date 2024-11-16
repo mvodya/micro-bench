@@ -1,0 +1,21 @@
+// Image width
+#define MB_MANDELBULB_RESOLUTION_WIDTH @MB_MANDELBULB_RESOLUTION_WIDTH@
+// Image height
+#define MB_MANDELBULB_RESOLUTION_HEIGHT @MB_MANDELBULB_RESOLUTION_HEIGHT@
+
+// Maximum number of steps for ray marching
+#define MB_MANDELBULB_MAX_MARCHING_STEPS @MB_MANDELBULB_MAX_MARCHING_STEPS@
+// Maximum marching distance before stopping
+#define MB_MANDELBULB_MAX_DISTANCE @MB_MANDELBULB_MAX_DISTANCE@
+// Minimum distance threshold to consider on surface
+#define MB_MANDELBULB_SURFACE_DISTANCE @MB_MANDELBULB_SURFACE_DISTANCE@
+
+// Maximum iterations for distance estimator function
+#define MB_MANDELBULB_MAX_ITERATIONS @MB_MANDELBULB_MAX_ITERATIONS@
+// Escape radius for distance estimator
+#define MB_MANDELBULB_BAILOUT @MB_MANDELBULB_BAILOUT@
+// Power exponent for Mandelbulb fractal shape
+#define MB_MANDELBULB_POWER @MB_MANDELBULB_POWER@
+
+// Number of renders to be performed (identical renders for quality check)
+#define MB_RENDER_NUM @MB_RENDER_NUM@
