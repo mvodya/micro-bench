@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 project(microbench)
 
 # Common library
-add_subdirectory(microbenchlib)
+option(MB_ENABLE_MICROBENCHLIB "Enable shared microbenchlib" ON)
+if(MB_ENABLE_MICROBENCHLIB)
+    add_subdirectory(microbenchlib)
+endif()
 
 # Single thread mandelbulb
 option(MB_ENABLE_MANDELBULB_SINGLETHREAD "Enable benchmark with mandelbulb single thread" ON)
