@@ -25,6 +25,12 @@ if(MB_ENABLE_MANDELBULB_ANIMATION)
     add_subdirectory(mandelbulb_animation)
 endif()
 
+# Build mandelbulb baremetal benchmark
+option(MB_ENABLE_MANDELBULB_BAREMETAL "Enable benchmark with mandelbulb baremetal" OFF)
+if(MB_ENABLE_MANDELBULB_BAREMETAL)
+    add_subdirectory(mandelbulb_baremetal)
+endif()
+
 # Check is CUDA is avaible
 include(CheckLanguage)
 check_language(CUDA)
