@@ -16,12 +16,12 @@ export default class Vec3 {
     return new Vec3(this.x - v.x, this.y - v.y, this.z - v.z);
   }
 
-  // Multiplication by value
+  // Multiplication by scalar
   multiply(v) {
     return new Vec3(this.x * v, this.y * v, this.z * v);
   }
 
-  // Scalar multiplication
+  // Dot product
   dot(v) {
     return (this.x * v.x + this.y * v.y + this.z * v.z);
   }
