@@ -23,12 +23,12 @@ export default class Vec3 {
 
   // Dot product
   dot(v) {
-    return (this.x * v.x + this.y * v.y + this.z * v.z);
+    return this.x * v.x + this.y * v.y + this.z * v.z;
   }
 
   // Vector length
   length() {
-    return Math.sqrt((this.x ** 2) + (this.y ** 2) + (this.z ** 2));
+    return Math.sqrt(this.x ** 2 + this.y ** 2 + this.z ** 2);
   }
 
   // Get vector normalize

@@ -17,7 +17,7 @@ export const measure = async (func, ...args) => {
     const end = getCurrentTime();
     return { result, duration: Number(end - start) };
   }
-}
+};
 
 // Get current time in nanoseconds
 function getCurrentTime() {
