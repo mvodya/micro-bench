@@ -3,7 +3,7 @@
 import { measure } from "../lib/index.js";
 import { Vec3 } from "../lib/index.js";
 import fs from "fs";
-import { createCanvas } from 'canvas';
+import { createCanvas } from "canvas";
 
 // Image width
 const WIDTH = 2048;
@@ -55,17 +55,27 @@ function mandelbulbDE(pos) {
     const sinPhi = Math.sin(POWER * phi);
     const cosPhi = Math.cos(POWER * phi);
 
-    z = new Vec3(zr * sinTheta * cosPhi, zr * sinTheta * sinPhi, zr * cosTheta).add(pos);
+    z = new Vec3(
+      zr * sinTheta * cosPhi,
+      zr * sinTheta * sinPhi,
+      zr * cosTheta,
+    ).add(pos);
   }
-  return 0.5 * Math.log(r) * r / dr;
+  return (0.5 * Math.log(r) * r) / dr;
 }
 
 // Calculate normal vector at a surface point
 function getNormal(pos) {
   const eps = 0.001;
-  const dx = mandelbulbDE(pos.add(new Vec3(eps, 0, 0))) - mandelbulbDE(pos.subtract(new Vec3(eps, 0, 0)));
-  const dy = mandelbulbDE(pos.add(new Vec3(0, eps, 0))) - mandelbulbDE(pos.subtract(new Vec3(0, eps, 0)));
-  const dz = mandelbulbDE(pos.add(new Vec3(0, 0, eps))) - mandelbulbDE(pos.subtract(new Vec3(0, 0, eps)));
+  const dx =
+    mandelbulbDE(pos.add(new Vec3(eps, 0, 0))) -
+    mandelbulbDE(pos.subtract(new Vec3(eps, 0, 0)));
+  const dy =
+    mandelbulbDE(pos.add(new Vec3(0, eps, 0))) -
+    mandelbulbDE(pos.subtract(new Vec3(0, eps, 0)));
+  const dz =
+    mandelbulbDE(pos.add(new Vec3(0, 0, eps))) -
+    mandelbulbDE(pos.subtract(new Vec3(0, 0, eps)));
   const normal = new Vec3(dx, dy, dz);
   return normal.normalize();
 }
@@ -92,7 +102,7 @@ function rayMarch(from, dir) {
 
 function mandelbulb() {
   const image = createCanvas(WIDTH, HEIGHT);
-  const ctx = image.getContext('2d');
+  const ctx = image.getContext("2d");
   const imageData = ctx.createImageData(WIDTH, HEIGHT);
   const buffer = imageData.data;
 
@@ -145,20 +155,24 @@ function mandelbulb() {
 
 (async () => {
   console.log("[JS] Mandelbulb single thread benchmark");
-  console.log(`Size: ${WIDTH} x ${HEIGHT}\nPOWER: ${POWER} / MAX ITERATIONS: ${MAX_MARCHING_STEPS}`);
+  console.log(
+    `Size: ${WIDTH} x ${HEIGHT}\nPOWER: ${POWER} / MAX ITERATIONS: ${MAX_MARCHING_STEPS}`,
+  );
 
   // Steps
   for (let i = 0; i < STEPS; i++) {
     console.log(`Start rendering ${i + 1}/${STEPS}`);
-    const { result: image, duration } = await measure((mandelbulb));
-    console.log(`[${i + 1}] Execution time: ${duration} ns (${Number(duration) / 1e9} s)`);
+    const { result: image, duration } = await measure(mandelbulb);
+    console.log(
+      `[${i + 1}] Execution time: ${duration} ns (${Number(duration) / 1e9} s)`,
+    );
 
     if (i === 0) {
-      console.log('Save first run to file mandelbulb.png');
-      const out = fs.createWriteStream('mandelbulb.png');
+      console.log("Save first run to file mandelbulb.png");
+      const out = fs.createWriteStream("mandelbulb.png");
       const stream = image.createPNGStream();
       stream.pipe(out);
-      await new Promise((resolve) => out.on('finish', resolve));
+      await new Promise((resolve) => out.on("finish", resolve));
     }
   }
 })();
