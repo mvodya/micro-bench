@@ -68,7 +68,7 @@ function mandelbulb() {
 (async () => {
   console.log("[JS] Mandelbulb single thread benchmark");
   console.log(
-    `Size: ${mandelbulblib.WIDTH} x ${mandelbulblib.HEIGHT}\nPOWER: ${mandelbulblib.POWER} / MAX ITERATIONS: ${mandelbulblib.MAX_MARCHING_STEPS}`,
+    `Size: ${WIDTH} x ${HEIGHT}\nPOWER: ${mandelbulblib.POWER} / MAX ITERATIONS: ${mandelbulblib.MAX_MARCHING_STEPS}`,
   );
 
   // Steps
