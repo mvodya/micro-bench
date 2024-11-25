@@ -5,7 +5,8 @@
   "type": "module",
   "main": "lib/index.js",
   "bin": {
-    "mandelbulb_singlethread": "bin/mandelbulb_singlethread.js"
+    "mandelbulb_singlethread": "bin/mandelbulb_singlethread.js",
+    "mandelbulb_multithread": "bin/mandelbulb_multithread.js"
   },
   "scripts": {
     "start": "node bin/mandelbulb_singlethread.js",
