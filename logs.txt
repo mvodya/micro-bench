@@ -222,3 +222,31 @@ Start rendering 9/10
 [9] Execution time: 71949559500 ns (71.9495595 s)
 Start rendering 10/10
 [10] Execution time: 73348202100 ns (73.3482021 s)
+
+
+
+[JS] Mandelbulb multi threaded benchmark
+Number of available threads: 16
+Size: 2048 x 2048
+POWER: 8 / MAX ITERATIONS: 100
+Start rendering 1/10
+[1] Execution time: 9032846400 ns (9.0328464 s)
+Save first run to file mandelbulb.png
+Start rendering 2/10
+[2] Execution time: 8715043900 ns (8.7150439 s)
+Start rendering 3/10
+[3] Execution time: 8661441400 ns (8.6614414 s)
+Start rendering 4/10
+[4] Execution time: 8745377900 ns (8.7453779 s)
+Start rendering 5/10
+[5] Execution time: 8880079800 ns (8.8800798 s)
+Start rendering 6/10
+[6] Execution time: 8586894300 ns (8.5868943 s)
+Start rendering 7/10
+[7] Execution time: 8653442700 ns (8.6534427 s)
+Start rendering 8/10
+[8] Execution time: 8808206700 ns (8.8082067 s)
+Start rendering 9/10
+[9] Execution time: 8562258600 ns (8.5622586 s)
+Start rendering 10/10
+[10] Execution time: 8638010500 ns (8.6380105 s)
