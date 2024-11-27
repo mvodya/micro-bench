@@ -1,0 +1,38 @@
+{
+  "name": "micro-bench",
+  "version": "1.0.0",
+  "description": "Language benchmark tool",
+  "type": "module",
+  "main": "lib/index.js",
+  "bin": {
+    "mandelbulb_singlethread": "bin/mandelbulb_singlethread.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/bin/mandelbulb_singlethread.js",
+    "test": "mocha",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvodya/micro-bench.git"
+  },
+  "author": "Mark Vodyanitskiy (@mvodya)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mvodya/micro-bench/issues"
+  },
+  "homepage": "https://github.com/mvodya/micro-bench#readme",
+  "dependencies": {
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.0.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.0",
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2",
+    "prettier": "^3.4.1",
+    "ts-node": "^10.9.2"
+  }
+}
