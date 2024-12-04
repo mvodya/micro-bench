@@ -5,10 +5,10 @@
   "type": "module",
   "main": "lib/index.js",
   "bin": {
-    "mandelbulb_singlethread": "bin/mandelbulb_singlethread.ts"
+    "mandelbulb_singlethread": "dist/bin/mandelbulb_singlethread.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "start": "node dist/bin/mandelbulb_singlethread.js",
     "test": "mocha",
     "format": "prettier --write ."
@@ -34,6 +34,7 @@
     "chai": "^5.1.2",
     "mocha": "^10.8.2",
     "prettier": "^3.4.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.10"
   }
 }
