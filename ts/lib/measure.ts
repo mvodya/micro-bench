@@ -2,7 +2,7 @@ type AnyFunction = (...args: any[]) => any;
 
 // Measure function execution time
 export const measure = async <T>(
-  func: AnyFunction,
+  func: (...args: any[]) => T,
   ...args: Parameters<typeof func>
 ) => {
   // Start time
