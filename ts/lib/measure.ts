@@ -8,20 +8,12 @@ export const measure = async <T>(
   // Start time
   const start = getCurrentTime();
 
-  // Check type of function
-  if (func.constructor.name === "AsyncFunction") {
-    // Async function execution
-    const result = (await func(...args)) as T;
-    // End time
-    const end = getCurrentTime();
-    return { result, duration: Number(end - start) };
-  } else {
-    // Sync function execution
-    const result = func(...args) as T;
-    // End time
-    const end = getCurrentTime();
-    return { result, duration: Number(end - start) };
-  }
+  // Async or sync function execution
+  const result = await Promise.resolve(func(...args));
+
+  // End time
+  const end = getCurrentTime();
+  return { result, duration: Number(end - start) };
 };
 
 // Get current time in nanoseconds
