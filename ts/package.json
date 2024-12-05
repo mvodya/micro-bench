@@ -5,7 +5,8 @@
   "type": "module",
   "main": "lib/index.js",
   "bin": {
-    "mandelbulb_singlethread": "dist/bin/mandelbulb_singlethread.js"
+    "mandelbulb_singlethread": "dist/bin/mandelbulb_singlethread.js",
+    "mandelbulb_multithread": "dist/bin/mandelbulb_multithread.js"
   },
   "scripts": {
     "build": "tsc && tsc-alias",
