@@ -1,3 +1,5 @@
+import Foundation
+
 struct Vec3 {
   // Vector values
   public var x, y, z: Double
@@ -21,11 +23,19 @@ struct Vec3 {
     return Vec3(x: a.x * f, y: a.y * f, z: a.z * f)
   }
   // Scalar multiplication
-  //TODO
+  static func * (a: Vec3, b: Vec3) -> Double {
+    return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
+  }
   // Calculate vector length
-  //TODO
+  public func length() -> Double {
+    return (x * x + y * y + z * z).squareRoot();
+  }
+
   // Get vector normalize
-  //TODO
+  public func normalize() -> Vec3 {
+    let len = length();
+    return Vec3(x: x / len, y: y / len, z: z / len);
+  }
 
   // Convert to color
   //TODO
