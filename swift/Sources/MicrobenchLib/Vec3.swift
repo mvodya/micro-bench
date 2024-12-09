@@ -13,9 +13,13 @@ struct Vec3 {
     return Vec3(x: a.x + b.x, y: a.y + b.y, z: a.z + b.z)
   }
   // Subtraction
-  //TODO
+  static func - (a: Vec3, b: Vec3) -> Vec3 {
+    return Vec3(x: a.x - b.x, y: a.y - b.y, z: a.z - b.z)
+  }
   // Multiplication by value
-  //TODO
+  static func * (a: Vec3, f: Double) -> Vec3 {
+    return Vec3(x: a.x * f, y: a.y * f, z: a.z * f)
+  }
   // Scalar multiplication
   //TODO
   // Calculate vector length
