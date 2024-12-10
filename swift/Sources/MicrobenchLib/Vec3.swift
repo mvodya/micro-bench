@@ -42,5 +42,7 @@ struct Vec3 {
   }
 
   // Convert to color
-  //TODO
+  public func toColor() -> Color {
+    return Color(self);
+  }
 }

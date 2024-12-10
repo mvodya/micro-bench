@@ -55,4 +55,13 @@ final class Vec3Tests: XCTestCase {
     XCTAssertEqual(result.z, 0.8, accuracy: TOLERANCE)
     XCTAssertEqual(result.length(), 1.0, accuracy: TOLERANCE)
   }
+
+  func testConvertToColor() {
+    let v = Vec3(x: 3.0, y: 1.0, z: 0.5)
+    let color = v.toColor()
+
+    XCTAssertEqual(color.r, 255)
+    XCTAssertEqual(color.g, 255)
+    XCTAssertEqual(color.b, 128)
+  }
 }
