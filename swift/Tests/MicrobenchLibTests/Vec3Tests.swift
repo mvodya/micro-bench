@@ -2,8 +2,6 @@ import XCTest
 
 @testable import MicrobenchLib
 
-let TOLERANCE = 1e-5
-
 final class Vec3Tests: XCTestCase {
   func testSummation() {
     let v1 = Vec3(x: 1.0, y: 2.0, z: 3.0)

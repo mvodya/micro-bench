@@ -31,8 +31,8 @@ final class ColorTests: XCTestCase {
     let color = Color(r: 26, g: 128, b: 255)
     let v = color.toVec3();
 
-    XCTAssertEqual(v.x, 0.1, accuracy: 1e-2)
-    XCTAssertEqual(v.y, 0.5, accuracy: 1e-2)
-    XCTAssertEqual(v.z, 1.0, accuracy: 1e-2)
+    XCTAssertEqual(v.x, 0.1, accuracy: TOLERANCE)
+    XCTAssertEqual(v.y, 0.5, accuracy: TOLERANCE)
+    XCTAssertEqual(v.z, 1.0, accuracy: TOLERANCE)
   }
 }
