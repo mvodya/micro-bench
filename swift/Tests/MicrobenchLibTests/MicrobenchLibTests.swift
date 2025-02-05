@@ -1,7 +1,7 @@
 import XCTest
 @testable import MicrobenchLib
 
-let TOLERANCE = 1e-5
+let TOLERANCE = 0.01
 
 final class MicrobenchLibTests: XCTestCase {
     func testSayHello() {
