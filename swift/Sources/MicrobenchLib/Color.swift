@@ -1,4 +1,6 @@
-struct Color {
+import Foundation
+
+struct Color: Equatable {
   // Color values
   public var r, g, b: UInt8
 
@@ -18,13 +20,18 @@ struct Color {
 
   // Create color from vector
   public init(_ v: Vec3) {
-    r = UInt8(min(max((v.x * 255.0).rounded(), 0), 255));
-    g = UInt8(min(max((v.y * 255.0).rounded(), 0), 255));
-    b = UInt8(min(max((v.z * 255.0).rounded(), 0), 255));
+    r = UInt8(min(max((v.x * 255.0).rounded(), 0), 255))
+    g = UInt8(min(max((v.y * 255.0).rounded(), 0), 255))
+    b = UInt8(min(max((v.z * 255.0).rounded(), 0), 255))
   }
 
   // Get vector from color
   public func toVec3() -> Vec3 {
-    return Vec3(x: Double(r) / 255.0, y: Double(g) / 255.0, z: Double(b) / 255.0);
+    return Vec3(x: Double(r) / 255.0, y: Double(g) / 255.0, z: Double(b) / 255.0)
+  }
+
+  // Equatable protocol implementation
+  static public func == (lhs: Color, rhs: Color) -> Bool {
+    return lhs.r == rhs.r && lhs.g == rhs.g && lhs.b == rhs.b
   }
 }

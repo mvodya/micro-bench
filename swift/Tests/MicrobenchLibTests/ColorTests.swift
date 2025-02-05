@@ -35,4 +35,12 @@ final class ColorTests: XCTestCase {
     XCTAssertEqual(v.y, 0.5, accuracy: TOLERANCE)
     XCTAssertEqual(v.z, 1.0, accuracy: TOLERANCE)
   }
+
+  func testEquatable() {
+    let color1 = Color(r: 26, g: 128, b: 255)
+    let color2 = Color(Vec3(x: 0.1, y: 0.5, z: 1.0))
+    let color3 = Color(r: 25, g: 127, b: 254)
+    XCTAssertEqual(color1, color2)
+    XCTAssertNotEqual(color1, color3)
+  }
 }
